@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Umut Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =============================
+GLOBAL STYLE
+============================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#05070d;
+color:white;
+font-family:Inter,sans-serif;
+overflow-x:hidden;
+}
+
+/* =============================
+PARTICLE BACKGROUND
+============================= */
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* =============================
+NAVBAR
+============================= */
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:25px 10%;
+position:fixed;
+width:100%;
+top:0;
+background:rgba(5,7,13,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+
+.logo{
+font-family:Orbitron;
+font-size:24px;
+}
+
+.menu a{
+color:#aaa;
+margin-left:30px;
+text-decoration:none;
+transition:0.3s;
+}
+
+.menu a:hover{
+color:#00e5ff;
+}
+
+/* =============================
+HEADER
+============================= */
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 10%;
+}
+
+header h1{
+font-family:Orbitron;
+font-size:64px;
+letter-spacing:5px;
+}
+
+header p{
+color:#888;
+margin-top:25px;
+max-width:600px;
+}
+
+.btn{
+margin-top:40px;
+padding:16px 40px;
+border:2px solid #00e5ff;
+color:#00e5ff;
+text-decoration:none;
+transition:0.4s;
+}
+
+.btn:hover{
+background:#00e5ff;
+color:black;
+}
+
+/* =============================
+SECTIONS
+============================= */
+
+section{
+padding:120px 10%;
+}
+
+.section-title{
+font-family:Orbitron;
+font-size:40px;
+margin-bottom:60px;
+}
+
+/* =============================
+PROJECT CARDS
+============================= */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:40px;
+}
+
+.card{
+background:#0f172a;
+padding:35px;
+border-radius:12px;
+transition:0.4s;
+border:1px solid #1e293b;
+}
+
+.card:hover{
+transform:translateY(-12px);
+border-color:#00e5ff;
+}
+
+/* =============================
+CONTACT
+============================= */
+
+.contact-box{
+background:#0f172a;
+padding:50px;
+border-radius:15px;
+max-width:600px;
+margin:auto;
+text-align:center;
+}
+
+/* =============================
+FOOTER
+============================= */
+
+footer{
+padding:50px;
+text-align:center;
+color:#666;
+background:#02040a;
+}
+
+/* =============================
+RESPONSIVE
+============================= */
+
+@media(max-width:900px){
+header h1{
+font-size:36px;
+}
+nav{
+flex-direction:column;
+align-items:center;
+}
+.menu{
+margin-top:15px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<nav>
+<div class="logo">Umut Studio</div>
+<div class="menu">
+<a href="#about">About</a>
+<a href="#projects">Project</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<header>
+<h1>Umut Studio</h1>
+<p>
+Independent game development studio focused on system-driven immersive experiences.
+Currently developing futuristic drone-based single player gameplay technology.
+</p>
+<a class="btn" href="#projects">Explore Project</a>
+</header>
+
+<section id="about">
+<h2 class="section-title">About Studio</h2>
+
+<div class="projects">
+
+<div class="card">
+<h3>Vision</h3>
+<p>
+Umut Studio aims to create immersive science fiction gameplay experiences
+with precision movement mechanics and atmospheric world design.
+</p>
+</div>
+
+<div class="card">
+<h3>Technology</h3>
+<p>
+Unity Engine<br>
+Advanced Physics Simulation<br>
+Console Performance Optimization<br>
+Modular Architecture
+</p>
+</div>
+
+<div class="card">
+<h3>Platform</h3>
+<p>
+PC and PlayStation ecosystem targeting high stability frame performance.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h2 class="section-title">Current Project</h2>
+
+<div class="projects">
+
+<div class="card">
+<h3>Neon Protocol</h3>
+<p>
+Third-person tactical drone gameplay focusing on precision movement,
+system interaction and atmospheric exploration.
+</p>
+</div>
+
+<div class="card">
+<h3>Gameplay Style</h3>
+<p>
+Controlled pacing<br>
+System-based interaction<br>
+Minimal combat chaos<br>
+Physics-based drone control
+</p>
+</div>
+
+<div class="card">
+<h3>Engine</h3>
+<p>
+Developed using Unity technology stack with optimization for future console deployment.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Contact</h2>
+
+<div class="contact-box">
+<p>Email: contact@umutstudio.com</p>
+<p>Location: Independent Developer Studio</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 Umut Studio — All Rights Reserved
+</footer>
+
+<script>
+
+/* Smooth Scroll */
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',function(e){
+e.preventDefault();
+
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior:'smooth'
+});
+});
+});
+
+</script>
+
+</body>
+</html>
