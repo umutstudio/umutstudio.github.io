@@ -2,308 +2,234 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Umut Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umut Studio | PS5</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =============================
-GLOBAL STYLE
-============================= */
+:root{
+--primary:#00B4FF;
+--accent:#1FFFE0;
+--bg:#000814;
+--text:#F2F5F9;
+}
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-background:#05070d;
-color:white;
-font-family:Inter,sans-serif;
+font-family:'Orbitron',sans-serif;
+background:var(--bg);
+color:var(--text);
 overflow-x:hidden;
+height:600vh;
 }
 
-/* =============================
-PARTICLE BACKGROUND
-============================= */
+/* VIDEO BACKGROUND */
 
-#particles{
+.video-container{
 position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+overflow:hidden;
+z-index:-2;
+}
+
+video{
 width:100%;
 height:100%;
+object-fit:cover;
+filter:brightness(0.7);
+}
+
+/* DARK OVERLAY */
+
+.video-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+background:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0.8));
 z-index:-1;
 }
 
-/* =============================
-NAVBAR
-============================= */
+/* HERO */
 
-nav{
-display:flex;
-justify-content:space-between;
-padding:25px 10%;
+.hero{
 position:fixed;
-width:100%;
-top:0;
-background:rgba(5,7,13,0.6);
-backdrop-filter:blur(10px);
-z-index:1000;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+transition:all 0.5s ease;
 }
 
-.logo{
-font-family:Orbitron;
-font-size:24px;
+.hero h1{
+font-size:4rem;
+letter-spacing:6px;
+color:var(--primary);
+text-shadow:0 0 20px var(--primary);
 }
 
-.menu a{
-color:#aaa;
-margin-left:30px;
-text-decoration:none;
-transition:0.3s;
+.hero p{
+margin-top:20px;
+opacity:0.8;
 }
 
-.menu a:hover{
-color:#00e5ff;
-}
-
-/* =============================
-HEADER
-============================= */
-
-header{
+.section{
 height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-text-align:center;
 padding:0 10%;
-}
-
-header h1{
-font-family:Orbitron;
-font-size:64px;
-letter-spacing:5px;
-}
-
-header p{
-color:#888;
-margin-top:25px;
-max-width:600px;
-}
-
-.btn{
-margin-top:40px;
-padding:16px 40px;
-border:2px solid #00e5ff;
-color:#00e5ff;
-text-decoration:none;
-transition:0.4s;
-}
-
-.btn:hover{
-background:#00e5ff;
-color:black;
-}
-
-/* =============================
-SECTIONS
-============================= */
-
-section{
-padding:120px 10%;
-}
-
-.section-title{
-font-family:Orbitron;
-font-size:40px;
-margin-bottom:60px;
-}
-
-/* =============================
-PROJECT CARDS
-============================= */
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-}
-
-.card{
-background:#0f172a;
-padding:35px;
-border-radius:12px;
-transition:0.4s;
-border:1px solid #1e293b;
-}
-
-.card:hover{
-transform:translateY(-12px);
-border-color:#00e5ff;
-}
-
-/* =============================
-CONTACT
-============================= */
-
-.contact-box{
-background:#0f172a;
-padding:50px;
-border-radius:15px;
-max-width:600px;
-margin:auto;
 text-align:center;
+opacity:0;
+transform:translateY(50px);
+transition:all 1s ease;
 }
 
-/* =============================
-FOOTER
-============================= */
+.section.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.section h2{
+font-size:2.5rem;
+margin-bottom:20px;
+color:var(--accent);
+}
+
+.glass-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:40px;
+border-radius:20px;
+margin-top:30px;
+max-width:800px;
+box-shadow:0 0 30px rgba(0,180,255,0.2);
+}
 
 footer{
-padding:50px;
-text-align:center;
-color:#666;
-background:#02040a;
-}
-
-/* =============================
-RESPONSIVE
-============================= */
-
-@media(max-width:900px){
-header h1{
-font-size:36px;
-}
-nav{
-flex-direction:column;
+height:100vh;
+display:flex;
+justify-content:center;
 align-items:center;
+font-size:1.2rem;
+opacity:0.6;
 }
-.menu{
-margin-top:15px;
+
+@media(max-width:768px){
+.hero h1{
+font-size:2.5rem;
+}
+.section h2{
+font-size:1.8rem;
 }
 }
 
 </style>
 </head>
-
 <body>
 
-<div id="particles"></div>
-
-<nav>
-<div class="logo">Umut Studio</div>
-<div class="menu">
-<a href="#about">About</a>
-<a href="#projects">Project</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<header>
-<h1>Umut Studio</h1>
-<p>
-Independent game development studio focused on system-driven immersive experiences.
-Currently developing futuristic drone-based single player gameplay technology.
-</p>
-<a class="btn" href="#projects">Explore Project</a>
-</header>
-
-<section id="about">
-<h2 class="section-title">About Studio</h2>
-
-<div class="projects">
-
-<div class="card">
-<h3>Vision</h3>
-<p>
-Umut Studio aims to create immersive science fiction gameplay experiences
-with precision movement mechanics and atmospheric world design.
-</p>
+<div class="video-container">
+<video id="video" muted playsinline preload="auto">
+<source src="video.mp4" type="video/mp4">
+</video>
 </div>
 
-<div class="card">
-<h3>Technology</h3>
-<p>
-Unity Engine<br>
-Advanced Physics Simulation<br>
-Console Performance Optimization<br>
-Modular Architecture
-</p>
+<div class="video-overlay"></div>
+
+<div class="hero" id="hero">
+<h1>UMUT STUDIO</h1>
+<p>Next-Gen PS5 Experience</p>
 </div>
 
-<div class="card">
-<h3>Platform</h3>
-<p>
-PC and PlayStation ecosystem targeting high stability frame performance.
-</p>
+<div class="section">
+<h2>Immersive Gameplay</h2>
+<div class="glass-card">
+Built exclusively for PlayStation 5 architecture.  
+Cinematic immersion meets next-gen performance.
+</div>
 </div>
 
+<div class="section">
+<h2>DualSense Innovation</h2>
+<div class="glass-card">
+Adaptive triggers and haptic feedback designed  
+for deep emotional gameplay impact.
 </div>
-</section>
-
-<section id="projects">
-<h2 class="section-title">Current Project</h2>
-
-<div class="projects">
-
-<div class="card">
-<h3>Neon Protocol</h3>
-<p>
-Third-person tactical drone gameplay focusing on precision movement,
-system interaction and atmospheric exploration.
-</p>
 </div>
 
-<div class="card">
-<h3>Gameplay Style</h3>
-<p>
-Controlled pacing<br>
-System-based interaction<br>
-Minimal combat chaos<br>
-Physics-based drone control
-</p>
+<div class="section">
+<h2>Ultra Fast Loading</h2>
+<div class="glass-card">
+SSD powered seamless world transitions  
+with zero immersion break.
 </div>
-
-<div class="card">
-<h3>Engine</h3>
-<p>
-Developed using Unity technology stack with optimization for future console deployment.
-</p>
 </div>
-
-</div>
-</section>
-
-<section id="contact">
-<h2 class="section-title">Contact</h2>
-
-<div class="contact-box">
-<p>Email: contact@umutstudio.com</p>
-<p>Location: Independent Developer Studio</p>
-</div>
-
-</section>
 
 <footer>
-© 2026 Umut Studio — All Rights Reserved
+© 2026 Umut Studio — PlayStation 5 Development
 </footer>
 
 <script>
 
-/* Smooth Scroll */
+const video = document.getElementById("video");
+const hero = document.getElementById("hero");
+const sections = document.querySelectorAll(".section");
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
+let targetTime = 0;
+let currentTime = 0;
+let easing = 0.05;
 
-document.querySelector(this.getAttribute('href')).scrollIntoView({
-behavior:'smooth'
+/* Smooth Video Scroll Sync */
+
+video.addEventListener("loadedmetadata", () => {
+
+const scrollHeight = document.body.scrollHeight - window.innerHeight;
+
+window.addEventListener("scroll", () => {
+const scrollFraction = window.scrollY / scrollHeight;
+targetTime = video.duration * scrollFraction;
+
+/* Hero fade */
+if(window.scrollY > window.innerHeight * 0.4){
+hero.style.opacity = "0";
+hero.style.transform = "translate(-50%,-60%) scale(0.9)";
+}else{
+hero.style.opacity = "1";
+hero.style.transform = "translate(-50%,-50%) scale(1)";
+}
+
+/* Section reveal */
+sections.forEach(section => {
+const rect = section.getBoundingClientRect();
+if(rect.top < window.innerHeight * 0.8){
+section.classList.add("active");
+}
 });
+
 });
+
+/* Smooth interpolation */
+function animate(){
+currentTime += (targetTime - currentTime) * easing;
+video.currentTime = currentTime;
+requestAnimationFrame(animate);
+}
+
+animate();
+
 });
 
 </script>
